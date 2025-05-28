@@ -6,3 +6,9 @@ run: build
 
 test:
 	@go test -v ./...
+
+migrateup: 
+	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/db?sslmode=disable" -verbose up
+
+migratedown: 
+	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/db?sslmode=disable" -verbose down
